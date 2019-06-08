@@ -11,17 +11,18 @@ import io.ditclear.app.multitype.MultiTypeListKotlin
 import io.ditclear.app.partial.PartialRefreshListKotlin
 import io.ditclear.app.singletype.SingleTypeListKotlin
 
-class MainActivity : AppCompatActivity(), Presenter {
+class MainActivity : AppCompatActivity(), MainPresenter {
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.single_btn -> startActivity(Intent(this, SingleTypeListKotlin::class.java))
-            R.id.multi_btn -> startActivity(Intent(this, MultiTypeListKotlin::class.java))
-            R.id.ob_btn -> startActivity(Intent(this, PartialRefreshListKotlin::class.java))
-            else -> {
-            }
-        }
+    override fun onClickSingle(v: View?) {
+        startActivity(Intent(this, SingleTypeListKotlin::class.java))    }
+
+    override fun onMultiple(v: View?) {
+        startActivity(Intent(this, MultiTypeListKotlin::class.java))
     }
+
+    override fun onPartialRefresh(v: View?) {
+        startActivity(Intent(this, PartialRefreshListKotlin::class.java))    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
